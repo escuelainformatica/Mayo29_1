@@ -54,7 +54,9 @@ namespace ConsolaTienda.servicio
         public static DetalleFactura BuscarLinq(List<DetalleFactura> lista, string valorBuscado)
         {
             var resultado=new DetalleFactura();
-            resultado=lista.Where( df => df.Descripcion==valorBuscado ).First();
+            resultado=lista // listado de detalle factura
+                .Where( df => df.Descripcion==valorBuscado ) // listado reducido de lista factura
+                .First(); // detalle factura
             return resultado;
         }
 
