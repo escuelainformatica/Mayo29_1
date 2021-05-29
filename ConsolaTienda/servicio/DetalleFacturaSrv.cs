@@ -28,6 +28,38 @@ namespace ConsolaTienda.servicio
             }
             return total;
         }
+        public static int SumarLinq(List<DetalleFactura> lista)
+        {
+            var total=0;      //  operacion lambda =>
+    
+            total=lista.Sum( df => df.Cantidad*df.PrecioUntario );
+            return total;
+        }
+        public static DetalleFactura Buscar(List<DetalleFactura> lista, string valorBuscado)
+        {
+            // switch / case  break;
+
+            var resultado=new DetalleFactura();
+            foreach(var df in lista)
+            {
+                if(df.Descripcion==valorBuscado)
+                {
+                    resultado=df;
+                    break; // salir del ciclo foreach
+                }
+            }
+            return resultado;
+        }
+
+        public static DetalleFactura BuscarLinq(List<DetalleFactura> lista, string valorBuscado)
+        {
+            var resultado=new DetalleFactura();
+            resultado=lista.Where( df => df.Descripcion==valorBuscado ).First();
+            return resultado;
+        }
+
+
+
         public static int ObtenerMontoNeto(List<DetalleFactura> lista)
         {
             // round redondeo.
